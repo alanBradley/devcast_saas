@@ -18,7 +18,7 @@ end
 gem 'devise', '~> 3.5.2'
 # Use stripe for payments. 
 # Turbolinks commented out to help stop conflicts with stripe.
-gem 'stripe', '~> 1.25.0'
+gem 'stripe', '1.16.1'
 # Use figaro to hide secret key data
 gem 'figaro', '~> 1.1.1'
 # Use SCSS for stylesheets

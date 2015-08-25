@@ -12,7 +12,7 @@ $(document).ready(function() {
 		var ccNum = $('#card_number').val(),
 			cvcNum = $('#card_code').val(),
 			expMonth = $('#card_month').val(),
-			expYear = $('card_year').val();
+			expYear = $('#card_year').val();
 
 		if (!error) {
 			// Get the Stripe token:
@@ -21,7 +21,7 @@ $(document).ready(function() {
 				cvc: cvcNum,
 				exp_month: expMonth,
 				exp_year: expYear
-			}, StripeResponseHandler);
+			}, stripeResponseHandler);
 		}
 
 		return false;
@@ -32,12 +32,12 @@ $(document).ready(function() {
 		var f = $("#new_user");
 
 		// Get the token from the stripe response:
-		var token = resonse.id;
+		var token = response.id;
 
 		// Add the token to the form:
 		f.append('<input type="hidden" name="user[stripe_card_token]" value="' + token + '" />');
 
-		// Submit the form
+		// Submit the form getting the first form (0)
 		f.get(0).submit();
 	}
-)};
+});
