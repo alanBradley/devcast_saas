@@ -5,4 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :plan
+
+  # code for stripe validations
+  attr_accessor :stripe_card_token
+
+  def save_with_payment
+  	if valid?
+  		customer = stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
+  		self.stripe_customer_token = customer.id
+  		save!
+  	end
+  end
 end
